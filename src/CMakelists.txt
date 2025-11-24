@@ -1,0 +1,13 @@
+file(GLOB_RECURSE SRC_FILES
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+)
+
+add_library(simcore STATIC ${SRC_FILES})
+
+target_include_directories(simcore PUBLIC
+    ${PROJECT_SOURCE_DIR}/include
+)
+
+add_executable(sim_main main.cpp)
+
+target_link_libraries(sim_main PRIVATE simcore)
